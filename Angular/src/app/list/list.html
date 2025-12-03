@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Lista elementów</h2>
+  <input
+    #textInput
+    type="text"
+    placeholder="Wpisz cokolwiek"
+    (keyup.enter)="addItem(textInput.value); textInput.value=''"
+  >
+  <button (click)="addItem(textInput.value); textInput.value=''">Dodaj</button>
+
+  @if (items.length === 0) {
+    <p>Lista jest pusta</p>
+  } @else {
+    <ul>
+      @for (item of items; let i = $index; track i) {
+        <li>
+          {{ item }}
+          <a href="" (click)="removeItem(i); $event.preventDefault()">usuń</a>
+        </li>
+      }
+    </ul>
+  }
+
+</div>

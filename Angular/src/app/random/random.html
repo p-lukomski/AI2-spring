@@ -1,0 +1,15 @@
+<button (click)="generate(max)">Generuj liczbę (1 - {{max}})</button>
+
+@if (generated !== null) {
+  <p>Wylosowano: {{generated}}</p>
+  <p
+    [ngClass]="{
+      'low': isLow(),
+      'high': !isLow()
+    }"
+  >
+    {{ comment }}
+  </p>
+}
+
+

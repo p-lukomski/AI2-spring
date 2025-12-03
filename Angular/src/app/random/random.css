@@ -1,0 +1,9 @@
+.low {
+  color: green;
+  font-weight: bold;
+}
+
+.high {
+  color: red;
+  font-weight: bold;
+}
