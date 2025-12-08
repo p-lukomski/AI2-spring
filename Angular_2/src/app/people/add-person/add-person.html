@@ -1,0 +1,44 @@
+<h2>Dodaj nową osobę</h2>
+
+<form (ngSubmit)="save()">
+  <label>
+    Imię:
+    <input type="text" name="firstName" [(ngModel)]="person.firstName">
+  </label>
+  <br>
+
+  <label>
+    Nazwisko:
+    <input type="text" name="familyName" [(ngModel)]="person.familyName">
+  </label>
+  <br>
+
+  <label>
+    Wiek:
+    <input type="number" name="age" [(ngModel)]="person.age">
+  </label>
+  <br>
+
+  <fieldset>
+    <legend>Adres</legend>
+
+    <label>
+      Miasto:
+      <input type="text" name="city" [(ngModel)]="person.address.city">
+    </label>
+    <br>
+
+    <label>
+      Ulica:
+      <input type="text" name="street" [(ngModel)]="person.address.street">
+    </label>
+    <br>
+
+    <label>
+      Kod pocztowy:
+      <input type="text" name="postCode" [(ngModel)]="person.address.postCode">
+    </label>
+  </fieldset>
+
+  <button type="submit">Zapisz</button>
+</form>

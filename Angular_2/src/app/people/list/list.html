@@ -1,0 +1,17 @@
+<h2>Lista osób</h2>
+
+<button routerLink="/add">Dodaj nową osobę</button>
+
+<ul>
+  @for (p of people; track $index) {
+    <li>
+      {{ p.firstName }} {{ p.familyName }} ({{ p.age }})
+      |
+      <a [routerLink]="['/details', $index]">Szczegóły</a>
+      |
+      <button type="button" (click)="delete($index)">Usuń</button>
+    </li>
+  } @empty {
+    <li>Brak zapisanych osób.</li>
+  }
+</ul>
