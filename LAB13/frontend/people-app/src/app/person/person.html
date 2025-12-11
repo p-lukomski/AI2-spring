@@ -1,0 +1,89 @@
+<h2>Lista osób</h2>
+
+@if (errorMessage) {
+  <div class="msg error">{{ errorMessage }}</div>
+}
+@if (successMessage) {
+  <div class="msg success">{{ successMessage }}</div>
+}
+
+@if (people.length > 0) {
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Imię</th>
+      <th>Nazwisko</th>
+      <th>Email</th>
+      <th>Wiek</th>
+      <th>Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+
+      @for (p of people; track p.id) {
+        <tr>
+          <td>{{ p.id }}</td>
+          <td>{{ p.firstName }}</td>
+          <td>{{ p.familyName }}</td>
+          <td>{{ p.email }}</td>
+          <td>{{ p.age }}</td>
+          <td>
+            <button (click)="startEdit(p)">Edytuj</button>
+            <button (click)="delete(p)">Usuń</button>
+          </td>
+        </tr>
+      }
+
+    </tbody>
+  </table>
+} @else {
+  <p>Brak danych w bazie.</p>
+}
+
+<hr>
+
+<h3>{{ isEditMode ? 'Edytuj osobę' : 'Dodaj osobę' }}</h3>
+
+<form (ngSubmit)="save()">
+
+  <input
+    type="text"
+    placeholder="Imię"
+    [(ngModel)]="formPerson.firstName"
+    name="firstName"
+    required
+  />
+
+  <input
+    type="text"
+    placeholder="Nazwisko"
+    [(ngModel)]="formPerson.familyName"
+    name="lastName"
+    required
+  />
+
+  <input
+    type="email"
+    placeholder="Email"
+    [(ngModel)]="formPerson.email"
+    name="email"
+    required
+  />
+
+  <input
+    type="number"
+    placeholder="Wiek"
+    [(ngModel)]="formPerson.age"
+    name="age"
+  />
+
+  <button type="submit">
+    {{ isEditMode ? "Zapisz" : "Dodaj" }}
+  </button>
+
+  @if (isEditMode) {
+    <button type="button" (click)="startCreate()">Anuluj</button>
+  }
+
+</form>
